@@ -8,7 +8,8 @@ public class Main
         Road road1 = new Road();
         TrafficLight traffic_light = new TrafficLight();
 
-        // Set lengths for each road and the traffic lights
+        // Set lengths and positions for each object
+        car.setPosition(1);
         road.setLength(car.getLength());
         road1.setLength(car.getLength());
         Road[] roads = {road, road1};
