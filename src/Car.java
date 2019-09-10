@@ -5,7 +5,7 @@ class Car {
 
     public Car()
     {
-        this.position = 1;
+        this.position = 0;
         this.length = 1;
     }
 

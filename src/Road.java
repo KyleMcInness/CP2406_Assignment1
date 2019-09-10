@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Road {
-    private int length;
+    private int length = 0;
 
     public void setLength(int car_length) //  sets the road to be a random length between 6 and 15
     {

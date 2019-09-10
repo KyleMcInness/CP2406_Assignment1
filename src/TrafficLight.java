@@ -6,7 +6,7 @@ public class TrafficLight {
     private double change_rate;
 
     public TrafficLight() {
-        this.position = 7;
+        this.position = 0;
         this.status = false;
         this.change_rate = 0.3;
     }
