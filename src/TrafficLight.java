@@ -13,8 +13,9 @@ public class TrafficLight {
 
     // Setters and Getters
 
-    public void setPosition(int position) {
-        this.position = position;
+    public void setPosition() {
+        Road road = new Road();
+        this.position = road.getLength();
     }
 
     public void setStatus()

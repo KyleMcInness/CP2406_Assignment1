@@ -10,10 +10,10 @@ public class Main
 
         // Set lengths and positions for each object
         car.setPosition(1);
-        road.setLength(car.getLength());
-        road1.setLength(car.getLength());
+        road.setLength();
+        road1.setLength();
         Road[] roads = {road, road1};
-        traffic_light.setPosition(road.getLength());
+        traffic_light.setPosition();
 
         // Outputs current values for each object
         System.out.printf("Traffic light position: %d ; ", traffic_light.getPosition());
