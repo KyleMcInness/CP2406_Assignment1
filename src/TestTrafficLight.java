@@ -7,13 +7,15 @@ public class TestTrafficLight {
     {
         TrafficLight trafficLight = new TrafficLight();
 
+        // Asserting the default length is 0 & the status is set to false
         assertEquals(0, trafficLight.getPosition());
         assertFalse(trafficLight.isStatus());
 
-        trafficLight.setPosition(8);
+        // Set the position and status
+        trafficLight.setPosition();
         trafficLight.setStatus();
 
-        assertEquals(8, trafficLight.getPosition());
+        // Assert that the status is set to true
         assertTrue(trafficLight.isStatus());
 
     }
