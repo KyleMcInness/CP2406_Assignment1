@@ -20,11 +20,11 @@ public abstract class Vehicle {
     }
 
     public void move() {
-        x += xSpeed * xDir;
-        y += ySpeed * yDir;
+        x += xDir;
+        y += yDir;
     }
 
-    public abstract void update(int boundaryWidth, int boundaryHeight);
+    public abstract void update(int width, int height);
 
     public abstract void paintComponent(Graphics g);
 }
