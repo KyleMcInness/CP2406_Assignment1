@@ -8,10 +8,10 @@ import java.awt.*;
 public class Main extends JPanel {
     private Timer timer;
     JButton button = new JButton();
-    Road road = new Road(10, 100, Color.darkGray);
-    Road road2 = new Road(road.getWidth() + road.getPositionX(),100, Color.darkGray);
-    Car car = new Car(11, 102, 40, 20, Color.blue, 1, 0);
-    TrafficLight trafficLight = new TrafficLight(road.getWidth() + road.getPositionX() - 26, road.getPositionY() - 26, Color.red);
+    Road road = new Road(10, 100, Color.darkGray, true);
+    Road road2 = new Road(210,100, Color.darkGray, false);
+    Car car = new Car(road.getX() + 5, road.getY() + 5, 1, 0);
+    TrafficLight trafficLight = new TrafficLight(road.getWidth() + road.getX() - 26, road.getY() - 26, Color.red);
 
     public Main() {
         super();
@@ -28,16 +28,8 @@ public class Main extends JPanel {
                 timer.stop();
             }
             timer = new Timer(1000 / 60, e -> {
-                if (car.getXDir() == 1 || car.getXDir() == -1) {
-                    car.moveX();
-
-                } else if (car.getYDir() == 1 || car.getYDir() == -1) {
-                    car.moveY();
-                }
-
+                car.move();
                 trafficLight.setState();
-
-
                 repaint();
                 car.update(trafficLight.getPositionX(), trafficLight.getPositionY(), trafficLight.getState());
 
