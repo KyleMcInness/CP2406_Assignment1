@@ -5,15 +5,19 @@ import java.awt.*;
 public class Car extends Vehicle {
     // Declare variables
     private int x, y, xDir, yDir, width, height;
+    private Color color;
+    private Boolean is_horizontal;
 
-    public Car(int x, int y, int width, int height, Color color, int xDir, int yDir) {
-        super(x, y, color);
+    public Car(int x, int y, int xDir, int yDir) {
+        super(x, y);
         this.x = x;
         this.y = y;
-        this.height = height;
-        this.width = width;
+        this.height = 20;
+        this.width = 40;
         this.xDir = xDir;
         this.yDir = yDir;
+        this.color = Color.blue;
+        this.is_horizontal = true;
     }
 
     public void moveX() {
@@ -89,7 +93,13 @@ public class Car extends Vehicle {
     @Override
     public void paintComponent(Graphics g) {
         g.setColor(color);
-        g.fillRect(x, y, width, height);
+
+
+        if (is_horizontal)
+            g.fillRect(x, y, width, height);
+        else
+            g.fillRect(x + width - 5, y, height, width);
+
     }
 
 }
