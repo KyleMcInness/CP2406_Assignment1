@@ -12,7 +12,7 @@ public abstract class Shape {
         this.color = color;
     }
 
-    public abstract void update(int boundaryWidth, int boundaryHeight);
+    public abstract void update(int boundaryWidth, int boundaryHeight, TrafficLight.State state);
 
     public abstract void paintComponent(Graphics g);
 }

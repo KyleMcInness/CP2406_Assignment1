@@ -7,7 +7,6 @@ public abstract class Vehicle {
     int x, y;
     Color color;
     int xDir, yDir;
-    int xSpeed, ySpeed;
 
     Vehicle(int x, int y, Color color) {
         this.x = x;
@@ -24,7 +23,7 @@ public abstract class Vehicle {
         y += yDir;
     }
 
-    public abstract void update(int width, int height);
+    public abstract void update(int width, int height, TrafficLight.State state);
 
     public abstract void paintComponent(Graphics g);
 }
