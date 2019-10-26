@@ -20,11 +20,9 @@ public class Car extends Vehicle {
         this.is_horizontal = true;
     }
 
-    public void moveX() {
+    @Override
+    public void move() {
         x += xDir;
-    }
-
-    public void moveY() {
         y += yDir;
     }
 
@@ -84,9 +82,15 @@ public class Car extends Vehicle {
     @Override
     public void update(int trafficLightXPos, int trafficLightYPos, TrafficLight.State state) {
         if ((x + width == trafficLightXPos && state == TrafficLight.State.STOP)) {
-            xDir *= 0;
+            xDir = 0;
         } else if ((state == TrafficLight.State.GO))
             xDir = 1;
+
+        if (x + width == 249){
+            yDir = 1;
+            xDir = 0;
+            is_horizontal = false;
+        }
 
     }
 
