@@ -1,16 +1,21 @@
+import model.Road;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
-public class TestRoad {
-    @Test public void CheckTestRoad() {
-        Road road = new Road();
+import java.awt.*;
 
-        // Asserting the default length is 0
-        assertEquals(0, road.getLength());
+import static org.junit.jupiter.api.Assertions.*;
 
-        // Assigning a random length
-        road.setLength();
-        System.out.println(road.getLength());
+public class TestRoad{
+    @Test
+        public void intialRoad() {
+            Road road = new Road(1, 1, Color.red);
+            assertEquals(10, road.getPositionY());
+            assertEquals(10, road.getPositionX());
+
+
+
+
+
 
     }
 }

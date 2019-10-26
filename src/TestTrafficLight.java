@@ -1,22 +1,29 @@
-import org.junit.Test;
+import model.Road;
+import model.TrafficLight;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import java.awt.*;
 
-public class TestTrafficLight {
-    @Test public void CheckTestTrafficLight()
-    {
-        TrafficLight trafficLight = new TrafficLight();
+import static org.junit.jupiter.api.Assertions.*;
 
-        // Asserting the default length is 0 & the status is set to false
-        assertEquals(0, trafficLight.getPosition());
-        assertFalse(trafficLight.isStatus());
+class TestTrafficLight {
+    @Test
+    void initialState() {
+        TrafficLight trafficLight = new TrafficLight(1, 1, Color.red);
+        Road road = new Road(1, 1, Color.red);
+        assertEquals(TrafficLight.State.GO, trafficLight.getState());
+        assertEquals(10, trafficLight.getPositionY());
+        assertEquals(road.getHeight(), trafficLight.getPositionX());
+    }
 
-        // Set the position and status
-        trafficLight.setPosition();
-        trafficLight.setStatus();
+    @Test
+    void stateStop() {
+        TrafficLight trafficLight = new TrafficLight(1, 1, Color.red);
+        Object state = trafficLight.setState();
 
-        // Assert that the status is set to true
-        assertTrue(trafficLight.isStatus());
+        while (state != TrafficLight.State.STOP)
+            state = trafficLight.setState();
 
+        assertEquals(TrafficLight.State.STOP, trafficLight.getState());
     }
 }
