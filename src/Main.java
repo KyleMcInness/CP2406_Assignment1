@@ -1,37 +1,66 @@
-public class Main
-{
-    public static void main(String[] args) {
+import model.Car;
+import model.Road;
+import model.TrafficLight;
 
-        // Initialises each object
-        Car car = new Car();
-        Road road = new Road();
-        Road road1 = new Road();
-        TrafficLight traffic_light = new TrafficLight();
+import javax.swing.*;
+import java.awt.*;
 
-        // Set lengths and positions for each object
-        car.setPosition(1);
-        road.setLength();
-        road1.setLength();
-        Road[] roads = {road, road1};
-        traffic_light.setPosition();
+public class Main extends JPanel {
+    private Timer timer;
+    JButton button = new JButton();
+    Road road = new Road(10, 100, Color.darkGray);
+    Road road2 = new Road(road.getWidth() + road.getPositionX(),100, Color.darkGray);
+    Car car = new Car(11, 102, 40, 20, Color.blue, 1, 0);
+    TrafficLight trafficLight = new TrafficLight(road.getWidth() + road.getPositionX() - 26, road.getPositionY() - 26, Color.red);
 
-        // Outputs current values for each object
-        System.out.printf("Traffic light position: %d ; ", traffic_light.getPosition());
-        System.out.printf("1st road length: %d ; ", road.getLength());
-        System.out.printf("2nd road length: %d\n", road1.getLength());
+    public Main() {
+        super();
+        add(button);
+        button.addActionListener(actionEvent -> animate());
+    }
 
-        for (int i = 0; i < roads.length; car.setPosition(1), i++) { // Iterate for every road object created, resetting the car's position
-            for (;car.getPosition() <= roads[i].getLength(); car.move()) { // Loops while the car's position is lower than the current road's length
+    private void animate() {
 
-                if (car.getPosition() == traffic_light.getPosition() - 1 && i == 0) // Sets traffic light to green when the car reaches the position before it and it's on the first road
-                {
-                    traffic_light.setStatus(); // Change the status of the traffic light to true
-                    for(int x = 0; x < 1000000000; ++x) // Add a delay
-                        for(int y = 0; y < 1000000000; ++y);
+        Boolean is_animate = Boolean.FALSE;
+
+        while (!is_animate) {
+            if (timer != null) {
+                timer.stop();
+            }
+            timer = new Timer(1000 / 60, e -> {
+                if (car.getXDir() == 1 || car.getXDir() == -1) {
+                    car.moveX();
+
+                } else if (car.getYDir() == 1 || car.getYDir() == -1) {
+                    car.moveY();
                 }
 
-                System.out.printf("Car: Road %s, Segment %d : %s\n", i+1, car.getPosition(), traffic_light.isStatus()); // Outputs the cars current position on the road
-            }
+                trafficLight.setState();
+
+
+                repaint();
+                car.update(trafficLight.getPositionX(), trafficLight.getPositionY(), trafficLight.getState());
+
+            });
+            timer.start();
+            is_animate = Boolean.TRUE;
         }
+
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        car.paintComponent(g);
+        road.paintComponent(g);
+        road2.paintComponent(g);
+        trafficLight.paintComponent(g);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        frame.add(new Main());
+        frame.setSize(500, 400);
+        frame.setVisible(true);
     }
 }
+
