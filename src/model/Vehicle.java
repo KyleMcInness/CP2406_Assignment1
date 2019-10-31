@@ -1,5 +1,3 @@
-package model;
-
 import java.awt.*;
 import java.util.Random;
 
@@ -21,7 +19,7 @@ public abstract class Vehicle {
         y += yDir;
     }
 
-    public abstract void update(int width, int height, TrafficLight.State state);
-
     public abstract void paintComponent(Graphics g);
+
+    public abstract void update(int positionX, int positionY, TrafficLight.State state, Boolean orientation, Road road);
 }
