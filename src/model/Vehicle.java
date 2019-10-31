@@ -21,5 +21,5 @@ public abstract class Vehicle {
 
     public abstract void paintComponent(Graphics g);
 
-    public abstract void update(int positionX, int positionY, TrafficLight.State state, Boolean orientation, Road road);
+    public abstract void update(TrafficLight trafficLight, Boolean orientation, Road[] road);
 }

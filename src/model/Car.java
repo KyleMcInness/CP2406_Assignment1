@@ -95,23 +95,38 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public void update(int trafficLightXPos, int trafficLightYPos, TrafficLight.State state, Boolean is_horizontal, Road road) {
+    public void update(TrafficLight trafficLight, Boolean is_horizontal, Road[] roads) {
         final int MAX_ROAD_X = 504;
         final int MIN_ROAD_X = 60;
         final int MAX_ROAD_Y = 260;
         final int MIN_ROAD_Y = 60;
+        int first_turn_x = 0;
+        int first_turn_y = 0;
+        TrafficLight.State state = trafficLight.getState();
+        final int TRAFFIC_LIGHT_WIDTH = trafficLight.getWidth();
 
-        if (x + width == trafficLightXPos && y - 23 == trafficLightYPos && state == TrafficLight.State.STOP && is_horizontal && xDir > 0) {
+        if (x + width == trafficLight.getPositionX() && y - TRAFFIC_LIGHT_WIDTH - 3 == trafficLight.getPositionY() && state == TrafficLight.State.STOP && is_horizontal && xDir > 0) {
             xDir = 0;
-        } else if (x + width == trafficLightXPos && y - 23 == trafficLightYPos && state == TrafficLight.State.GO && is_horizontal && xDir == 0) {
+        } else if (x + width == trafficLight.getPositionX() && y - TRAFFIC_LIGHT_WIDTH - 3 == trafficLight.getPositionY() && state == TrafficLight.State.GO && is_horizontal && xDir == 0) {
             xDir = 1;
         }
 
-        if (x + width == 303 && y - 2 == MIN_ROAD_Y) {
+        for (int i = 0; i < roads.length; i++) {
+            if (trafficLight.getPositionX() + TRAFFIC_LIGHT_WIDTH == roads[i].getX() - 1) {
+                if (roads[i].getOrientation())
+                    first_turn_x = roads[i].getX();
+                else
+                    first_turn_x = roads[i].getX() + roads[i].getWidth();
+                first_turn_y = roads[i].getY();
+                break;
+        }
+        }
+
+        if (x + width == first_turn_x && y - 2 == first_turn_y) {
             this.is_horizontal = false;
             setYDir(1);
             setXDir(0);
-            x += 20;
+            x += (width / 2) - 1;
         }
 
         if (y + 40 == MAX_ROAD_Y && x + 20 == 303) {
@@ -121,7 +136,7 @@ public class Car extends Vehicle {
             y = 218;
         }
 
-        if (x + width == MAX_ROAD_X && y == 218)
+        if (x + width == MAX_ROAD_X && y == MAX_ROAD_Y - 44 + 2)
             resetCar();
     }
 
@@ -134,16 +149,14 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent (Graphics g){
         g.setColor(color);
         if (is_horizontal) {
             g.fillRect(x, y, width, height);
 
-        }
-        else {
+        } else {
             g.fillRect(x, y, height, width);
 
         }
     }
-
 }
