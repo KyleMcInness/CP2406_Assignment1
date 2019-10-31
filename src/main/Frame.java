@@ -2,11 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class Frame extends JPanel {
+public class Frame extends JFrame {
 
     Frame() {
 
         JMenuBar menu_bar = new JMenuBar();
+        setJMenuBar(menu_bar);
 
         JMenu edit_mode = new JMenu("Edit Mode");
         JMenuItem create = new JMenuItem("Create");
