@@ -1,6 +1,5 @@
-package model;
-
 import java.awt.*;
+import java.util.Random;
 
 public class Car extends Vehicle {
     // Declare variables
@@ -79,31 +78,72 @@ public class Car extends Vehicle {
         return this.color;
     }
 
-    @Override
-    public void update(int trafficLightXPos, int trafficLightYPos, TrafficLight.State state) {
-        if ((x + width == trafficLightXPos && state == TrafficLight.State.STOP)) {
-            xDir = 0;
-        } else if ((state == TrafficLight.State.GO))
-            xDir = 1;
+    public Boolean getOrientation() {return this.is_horizontal;}
 
-        if (x + width == 249){
-            yDir = 1;
+    public String get_direction() {
+
+        Random random_number = new Random();
+        int number = random_number.nextInt(2);
+
+        if (number == 0)
+            return "left";
+        else if (number == 1)
+            return "straight";
+        else
+            return "right";
+
+    }
+
+    @Override
+    public void update(int trafficLightXPos, int trafficLightYPos, TrafficLight.State state, Boolean is_horizontal, Road road) {
+        final int MAX_ROAD_X = 504;
+        final int MIN_ROAD_X = 60;
+        final int MAX_ROAD_Y = 260;
+        final int MIN_ROAD_Y = 60;
+
+        if (x + width == trafficLightXPos && y - 23 == trafficLightYPos && state == TrafficLight.State.STOP && is_horizontal && xDir > 0) {
             xDir = 0;
-            is_horizontal = false;
+        } else if (x + width == trafficLightXPos && y - 23 == trafficLightYPos && state == TrafficLight.State.GO && is_horizontal && xDir == 0) {
+            xDir = 1;
         }
 
+        if (x + width == 303 && y - 2 == MIN_ROAD_Y) {
+            this.is_horizontal = false;
+            setYDir(1);
+            setXDir(0);
+            x += 20;
+        }
+
+        if (y + 40 == MAX_ROAD_Y && x + 20 == 303) {
+            this.is_horizontal = true;
+            setXDir(1);
+            setYDir(0);
+            y = 218;
+        }
+
+        if (x + width == MAX_ROAD_X && y == 218)
+            resetCar();
+    }
+
+    private void resetCar() {
+        x = 62;
+        y = 62;
+        xDir = 1;
+        yDir = 0;
+        this.is_horizontal = true;
     }
 
     @Override
     public void paintComponent(Graphics g) {
         g.setColor(color);
-
-
-        if (is_horizontal)
+        if (is_horizontal) {
             g.fillRect(x, y, width, height);
-        else
-            g.fillRect(x + width - 5, y, height, width);
 
+        }
+        else {
+            g.fillRect(x, y, height, width);
+
+        }
     }
 
 }
