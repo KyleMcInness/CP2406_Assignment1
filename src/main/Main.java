@@ -49,6 +49,8 @@ public class Main extends JPanel {
         Frame frame = new Frame();
 
         frame.setSize(564, 500);
+        frame.setVisible(true);
+        frame.pack();
 
         frame.add(new Main());
         frame.setVisible(true);
