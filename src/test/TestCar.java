@@ -1,4 +1,3 @@
-import model.Car;
 import org.junit.Test;
 
 import java.awt.*;
@@ -8,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestCar {
     @Test
     public void intialSetup() {
-        Car car = new Car(10, 100, 10, 20, Color.red, 1, 0);
+        Car car = new Car(1, 1, 1, 0);
         assertEquals(10, car.getPosX());
         assertEquals(100, car.getPosY());
         assertEquals(10, car.getWidth());
@@ -18,17 +17,17 @@ public class TestCar {
 
     @Test
     public void moveXDirection() {
-        Car car = new Car(10, 100, 10, 20, Color.red, 1, 0);
-        car.moveX();
+        Car car = new Car(1, 1, 1, 0);
+
         assertEquals(11, car.getPosX());
         assertEquals(100, car.getPosY());
     }
 
     @Test
     public void moveYDirection() {
-        Car car = new Car(10, 100, 10, 20, Color.red, 1, 0);
+        Car car = new Car(1, 1, 1, 0);
         car.setYDir(1);
-        car.moveY();
+
         assertEquals(10, car.getPosX());
         assertEquals(101, car.getPosY());
     }
