@@ -1,5 +1,3 @@
-package model;
-
 import java.awt.*;
 import java.util.Random;
 
@@ -9,11 +7,11 @@ public class TrafficLight extends Shape{
     private State state;
     private double change_rate;
 
-    public TrafficLight(int x, int y, Color color) {
-        super(x, y, color);
+    public TrafficLight(int x, int y) {
+        super(x, y);
         setPosition();
         state = State.STOP;
-        change_rate = 0.999;
+        change_rate = 0.99;
         width = 20;
         height = 20;
         this.color = getColor();
@@ -29,7 +27,6 @@ public class TrafficLight extends Shape{
         g.setColor(color);
         g.fillRect(x, y, width, height);
     }
-
     public enum State {
         STOP, GO
     }
@@ -37,7 +34,7 @@ public class TrafficLight extends Shape{
     // Setters and Getters
 
     public void setPosition() {
-        Road road = new Road(1, 1, Color.red);
+        Road road = new Road(1, 1, true);
         this.positionX = road.getHeight();
         this.positionY = road.getWidth();
     }
@@ -71,7 +68,6 @@ public class TrafficLight extends Shape{
         return this.y;
     }
     public int getWidth() {return this.width;}
-
     public State getState() {
         return this.state;
     }
