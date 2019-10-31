@@ -1,22 +1,18 @@
-import model.Car;
-import model.Road;
-import model.TrafficLight;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class Main extends JPanel {
-    private Timer timer;
-    JButton button = new JButton();
-    Road road = new Road(10, 100, Color.darkGray, true);
-    Road road2 = new Road(210,100, Color.darkGray, false);
-    Car car = new Car(road.getX() + 5, road.getY() + 5, 1, 0);
-    TrafficLight trafficLight = new TrafficLight(road.getWidth() + road.getX() - 26, road.getY() - 26, Color.red);
+    Timer timer;
+    private Road road = new Road(60, 60, true);
+    Road road2 = new Road(260, 60, false);
+    Road road3 = new Road(304, 216, true);
+    Car car = new Car(road.getX() + 2, road.getY() + 2, 1, 0);
+    TrafficLight trafficLight = new TrafficLight(road.getX() + road.getWidth() - 21, road.getY() - 21);
+
 
     public Main() {
         super();
-        add(button);
-        button.addActionListener(actionEvent -> animate());
+        animate();
     }
 
     private void animate() {
@@ -31,7 +27,7 @@ public class Main extends JPanel {
                 car.move();
                 trafficLight.setState();
                 repaint();
-                car.update(trafficLight.getPositionX(), trafficLight.getPositionY(), trafficLight.getState());
+                car.update(trafficLight.getPositionX(), trafficLight.getPositionY(), trafficLight.getState(), car.getOrientation(), road);
 
             });
             timer.start();
@@ -45,13 +41,16 @@ public class Main extends JPanel {
         car.paintComponent(g);
         road.paintComponent(g);
         road2.paintComponent(g);
+        road3.paintComponent(g);
         trafficLight.paintComponent(g);
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
+        Frame frame = new Frame();
+
+        frame.setSize(564, 500);
+
         frame.add(new Main());
-        frame.setSize(500, 400);
         frame.setVisible(true);
     }
 }
