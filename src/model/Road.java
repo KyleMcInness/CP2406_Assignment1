@@ -1,57 +1,52 @@
-package model;
-
 import java.awt.*;
-import java.util.Random;
 
 public class Road extends Shape{
-    private int height, width;
-    private int x, y;
+    private int height = 44, width = 200;
+
     private Boolean is_horizontal;
 
-    public Road(int x, int y, Color color, Boolean is_horizontal) {
-        super(x, y, color);
+    public Road(int x, int y, Boolean is_horizontal) {
+        super(x, y);
         this.x = x;
         this.y = y;
         this.is_horizontal = is_horizontal;
-        setDimensions();
+        this.color = Color.darkGray;
+        setDimensions(is_horizontal);
     }
 
-    public void setDimensions() //  sets the road to be a random length between 6 and 15
+    public void setDimensions(Boolean is_horizontal) //  sets the road to be a random length between 6 and 15
     {
-        if (is_horizontal) {
-            this.width = 200;
-            this.height = 55;
-        } else if (!is_horizontal) {
-            this.width = 55;
-            this.height = 200;
+        if (!is_horizontal) {
+            this.is_horizontal = false;
+            this.width = height;
+            this.height = width;
         }
-
+        else
+            this.is_horizontal = true;
     }
-
+    public int getX() {return this.x;}
+    public void setX(int x) {this.x = x;}
+    public int getY() {return this.y;}
+    public void setY(int y) {this.y = y;}
     public int getHeight() {
         return this.height;
     }
-
     public int getWidth() {
         return this.width;
     }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
-    }
+    public Boolean getOrientation() {return this.is_horizontal;}
 
     @Override
-    public void update(int boundaryWidth, int boundaryHeight, TrafficLight.State state) {
-
-    }
+    public void update(int boundaryWidth, int boundaryHeight, TrafficLight.State state) { }
 
     @Override
     public void paintComponent(Graphics g) {
         g.setColor(color);
-        g.drawRect(x, y, width, height);
+        is_horizontal = getOrientation();
+
+        if (is_horizontal)
+            g.drawRect(x, y, 200, 44);
+        else
+            g.drawRect(x, y, 44, 200);
     }
 }
