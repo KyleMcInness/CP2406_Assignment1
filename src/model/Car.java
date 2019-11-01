@@ -26,13 +26,6 @@ public class Car extends Vehicle {
     }
 
     // Setters and Getters
-    public void setPosX(int x) {
-        this.x = x;
-    }
-
-    public void setPosY(int y) {
-        this.y = y;
-    }
 
     public void setXDir(int xDir) {
         this.xDir = xDir;
@@ -40,14 +33,6 @@ public class Car extends Vehicle {
 
     public void setYDir(int yDir) {
         this.yDir = yDir;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
     }
 
     public int getWidth() {
@@ -64,14 +49,6 @@ public class Car extends Vehicle {
 
     public int getPosY() {
         return this.y;
-    }
-
-    public int getXDir() {
-        return this.xDir;
-    }
-
-    public int getYDir() {
-        return this.yDir;
     }
 
     public Color getColor() {
@@ -91,7 +68,6 @@ public class Car extends Vehicle {
             return "straight";
         else
             return "right";
-
     }
 
     @Override

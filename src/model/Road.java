@@ -25,9 +25,7 @@ public class Road extends Shape{
             this.is_horizontal = true;
     }
     public int getX() {return this.x;}
-    public void setX(int x) {this.x = x;}
     public int getY() {return this.y;}
-    public void setY(int y) {this.y = y;}
     public int getHeight() {
         return this.height;
     }
