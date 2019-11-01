@@ -27,7 +27,7 @@ public class Car extends Vehicle {
 
     // Setters and Getters
 
-    private void setXDir(int xDir) {
+    void setXDir(int xDir) {
         this.xDir = xDir;
     }
 
