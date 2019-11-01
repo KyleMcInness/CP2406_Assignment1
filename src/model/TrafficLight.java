@@ -17,11 +17,6 @@ public class TrafficLight extends Shape{
     }
 
     @Override
-    public void update(int boundaryWidth, int boundaryHeight, TrafficLight.State state) {
-
-    }
-
-    @Override
     public void paintComponent(Graphics g) {
         g.setColor(color);
         g.fillRect(x, y, width, height);

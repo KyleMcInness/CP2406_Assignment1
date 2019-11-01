@@ -37,9 +37,6 @@ public class Road extends Shape{
     public Boolean getOrientation() {return this.is_horizontal;}
 
     @Override
-    public void update(int boundaryWidth, int boundaryHeight, TrafficLight.State state) { }
-
-    @Override
     public void paintComponent(Graphics g) {
         g.setColor(color);
         is_horizontal = getOrientation();

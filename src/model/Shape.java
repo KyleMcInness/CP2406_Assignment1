@@ -9,7 +9,5 @@ public abstract class Shape {
         this.y = y;
     }
 
-    public abstract void update(int boundaryWidth, int boundaryHeight, TrafficLight.State state);
-
     public abstract void paintComponent(Graphics g);
 }
