@@ -14,7 +14,7 @@ public class Road extends Shape{
         setDimensions(is_horizontal);
     }
 
-    private void setDimensions(Boolean is_horizontal) //  sets the road to be a random length between 6 and 15
+    void setDimensions(Boolean is_horizontal) //  sets the road to be a random length between 6 and 15
     {
         if (!is_horizontal) {
             this.is_horizontal = false;
