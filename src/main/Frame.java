@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class Frame extends JFrame {
 
@@ -38,7 +37,4 @@ public class Frame extends JFrame {
         super.paint(g);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        repaint();
-    }
 }
