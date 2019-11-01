@@ -3,13 +3,12 @@ import java.util.Random;
 
 public class TrafficLight extends Shape{
 
-    private int positionX, positionY, width, height;
+    private int width, height;
     private State state;
     private double change_rate;
 
     public TrafficLight(int x, int y) {
         super(x, y);
-        setPosition();
         state = State.STOP;
         change_rate = 0.99;
         width = 20;
@@ -32,12 +31,6 @@ public class TrafficLight extends Shape{
     }
 
     // Setters and Getters
-
-    public void setPosition() {
-        Road road = new Road(1, 1, true);
-        this.positionX = road.getHeight();
-        this.positionY = road.getWidth();
-    }
 
     public Object setState() {
         Random random = new Random();
