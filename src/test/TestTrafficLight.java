@@ -7,16 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestTrafficLight {
     @Test
     void initialState() {
-        TrafficLight trafficLight = new TrafficLight(1, 1);
+        TrafficLight trafficLight = new TrafficLight(10, 10);
         Road road = new Road(1, 1, true);
-        assertEquals(TrafficLight.State.GO, trafficLight.getState());
+        assertEquals(20, trafficLight.getWidth());
+        assertEquals(TrafficLight.State.STOP, trafficLight.getState());
         assertEquals(10, trafficLight.getPositionY());
-        assertEquals(road.getHeight(), trafficLight.getPositionX());
+        assertEquals(10, trafficLight.getPositionX());
     }
 
     @Test
-    void stateStop() {
-        TrafficLight trafficLight = new TrafficLight(1, 1);
+    void stateGo() {
+        TrafficLight trafficLight = new TrafficLight(10, 10);
         Object state = trafficLight.setState();
 
         while (state != TrafficLight.State.STOP)
