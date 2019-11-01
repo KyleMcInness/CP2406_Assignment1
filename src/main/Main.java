@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main extends JPanel {
-    Timer timer;
+    private Timer timer;
     private Road road = new Road(60, 60, true);
-    Road road2 = new Road(260, 60, false);
-    Road road3 = new Road(304, 216, true);
-    Road[] roads = new Road[]{road, road2, road3};
-    Car car = new Car(road.getX() + 2, road.getY() + 2, 1, 0);
-    TrafficLight trafficLight = new TrafficLight(road.getX() + road.getWidth() - 21, road.getY() - 21);
+    private Road road2 = new Road(260, 60, false);
+    private Road road3 = new Road(304, 216, true);
+    private Road[] roads = new Road[]{road, road2, road3};
+    private Car car = new Car(road.getX() + 2, road.getY() + 2, 1, 0);
+    private TrafficLight trafficLight = new TrafficLight(road.getX() + road.getWidth() - 21, road.getY() - 21);
 
 
     public Main() {

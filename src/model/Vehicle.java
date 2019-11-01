@@ -2,8 +2,8 @@ import java.awt.*;
 import java.util.Random;
 
 public abstract class Vehicle {
-    int x, y;
-    int xDir, yDir;
+    private int x, y;
+    private int xDir, yDir;
 
     Vehicle(int x, int y) {
         this.x = x;

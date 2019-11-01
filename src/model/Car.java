@@ -27,35 +27,35 @@ public class Car extends Vehicle {
 
     // Setters and Getters
 
-    public void setXDir(int xDir) {
+    private void setXDir(int xDir) {
         this.xDir = xDir;
     }
 
-    public void setYDir(int yDir) {
+    void setYDir(int yDir) {
         this.yDir = yDir;
     }
 
-    public int getWidth() {
+    int getWidth() {
         return this.width;
     }
 
-    public int getHeight() {
+    int getHeight() {
         return this.height;
     }
 
-    public int getPosX() {
+    int getPosX() {
         return this.x;
     }
 
-    public int getPosY() {
+    int getPosY() {
         return this.y;
     }
 
-    public Color getColor() {
+    Color getColor() {
         return this.color;
     }
 
-    public Boolean getOrientation() {return this.is_horizontal;}
+    Boolean getOrientation() {return this.is_horizontal;}
 
     public String get_direction() {
 
@@ -87,15 +87,15 @@ public class Car extends Vehicle {
             xDir = 1;
         }
 
-        for (int i = 0; i < roads.length; i++) {
-            if (trafficLight.getPositionX() + TRAFFIC_LIGHT_WIDTH == roads[i].getX() - 1) {
-                if (roads[i].getOrientation())
-                    first_turn_x = roads[i].getX();
+        for (Road road : roads) {
+            if (trafficLight.getPositionX() + TRAFFIC_LIGHT_WIDTH == road.getX() - 1) {
+                if (road.getOrientation())
+                    first_turn_x = road.getX();
                 else
-                    first_turn_x = roads[i].getX() + roads[i].getWidth();
-                first_turn_y = roads[i].getY();
+                    first_turn_x = road.getX() + road.getWidth();
+                first_turn_y = road.getY();
                 break;
-        }
+            }
         }
 
         if (x + width == first_turn_x && y - 2 == first_turn_y) {

@@ -14,7 +14,7 @@ public class Road extends Shape{
         setDimensions(is_horizontal);
     }
 
-    public void setDimensions(Boolean is_horizontal) //  sets the road to be a random length between 6 and 15
+    private void setDimensions(Boolean is_horizontal) //  sets the road to be a random length between 6 and 15
     {
         if (!is_horizontal) {
             this.is_horizontal = false;
@@ -24,15 +24,15 @@ public class Road extends Shape{
         else
             this.is_horizontal = true;
     }
-    public int getX() {return this.x;}
-    public int getY() {return this.y;}
-    public int getHeight() {
+    int getX() {return this.x;}
+    int getY() {return this.y;}
+    int getHeight() {
         return this.height;
     }
-    public int getWidth() {
+    int getWidth() {
         return this.width;
     }
-    public Boolean getOrientation() {return this.is_horizontal;}
+    Boolean getOrientation() {return this.is_horizontal;}
 
     @Override
     public void paintComponent(Graphics g) {

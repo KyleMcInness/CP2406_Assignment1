@@ -27,7 +27,7 @@ public class TrafficLight extends Shape{
 
     // Setters and Getters
 
-    public Object setState() {
+    Object setState() {
         Random random = new Random();
         double random_int = random.nextDouble(); // Generates a random double
 
@@ -49,18 +49,18 @@ public class TrafficLight extends Shape{
         return state;
     }
 
-    public int getPositionX() {
+    int getPositionX() {
         return this.x;
     }
-    public int getPositionY() {
+    int getPositionY() {
         return this.y;
     }
-    public int getWidth() {return this.width;}
-    public State getState() {
+    int getWidth() {return this.width;}
+     State getState() {
         return this.state;
     }
 
-    public Color getColor() {
+    private Color getColor() {
         if (state.equals(State.GO))
             return Color.green;
         else
